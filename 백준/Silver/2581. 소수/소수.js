@@ -8,10 +8,10 @@ const [m, n] = fs
   .map(Number);
 
 let arr = Array(n + 1)
-  .fill(1)
-  .map((e, idx) => ({
+  .fill()
+  .map((_, idx) => ({
     num: idx,
-    isPrime: Boolean(e),
+    isPrime: true,
   }));
 arr[1].isPrime = false;
 
