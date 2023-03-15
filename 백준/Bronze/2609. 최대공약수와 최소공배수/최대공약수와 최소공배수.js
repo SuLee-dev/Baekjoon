@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-let [a, b] = fs.readFileSync("/dev/stdin").toString().trim().split(" ");
+let [a, b] = fs.readFileSync("/dev/stdin").toString().trim().split(" ").map(Number);
 if (a < b) [a, b] = [b, a];
 
 const [m, n] = [a, b];
