@@ -16,15 +16,13 @@ for (let i = 0; i < T; ++i) {
   }
 
   function DFS(x, y) {
-    if (x >= 0 && x < M && y >= 0 && y < N) {
-      if (farm[y][x] && !visited[y][x]) {
-        visited[y][x] = true;
-        DFS(x + 1, y);
-        DFS(x, y + 1);
-        DFS(x - 1, y);
-        DFS(x, y - 1);
-      }
-    } else return;
+    if (x >= 0 && x < M && y >= 0 && y < N && farm[y][x] && !visited[y][x]) {
+      visited[y][x] = true;
+      DFS(x + 1, y);
+      DFS(x, y + 1);
+      DFS(x - 1, y);
+      DFS(x, y - 1);
+    }
   }
 
   for (let y = 0; y < N; ++y) {
@@ -37,6 +35,4 @@ for (let i = 0; i < T; ++i) {
   }
 
   console.log(count);
-  count = 0;
-  farm.length = 0;
 }
