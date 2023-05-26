@@ -1,5 +1,6 @@
 using namespace std;
 #include <iostream>
+#include <algorithm>
 
 int main() 
 {
@@ -10,35 +11,17 @@ int main()
     cin >> N >> M;
     
     int result = 0;
-    if (M < 7)
+    
+    switch (N)
     {
-        switch (N)
-        {
-            case 1:
-                result = 1;
-                break;
-            case 2:
-                result = (M + 1) / 2;
-                break;
-            default:
-                result = (M > 4) ? 4 : M;
-                break;
-        }
-    }
-    else
-    {
-        switch (N)
-        {
-            case 1:
-                result = 1;
-                break;
-            case 2:
-                result = 4;
-                break;
-            default:
-                result = M - 2;       
-                break;
-        }
+        case 1:
+            result = 1;
+            break;
+        case 2:
+            result = min(4, (M + 1) / 2);
+            break;
+        default:
+            result = (M < 7) ? min(4, M) : M - 2;
     }
     
     cout << result;
