@@ -15,11 +15,7 @@ int main()
     sort(arr, arr + N, greater<>());
     
     int result = 0;
-    for (int i = 0; i < N; ++i)
-    {
-        int totalWeight = arr[i] * (i + 1);
-        result = (result < totalWeight) ? totalWeight : result;
-    }
+    for (int i = 0; i < N; ++i) result = max(result, arr[i] * (i + 1));
     
     cout << result;
 }
