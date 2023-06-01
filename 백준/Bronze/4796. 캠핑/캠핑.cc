@@ -14,7 +14,7 @@ int main()
         if (L && P && V)
         {
             ++caseNum;
-            result = V / P * L + ((V % P > L) ? L : V % P);
+            result = V / P * L + min(V % P, L);
             cout << "Case " << caseNum << ": " << result << "\n";
         }
         else break;
