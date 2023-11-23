@@ -2,6 +2,9 @@
 
 using namespace std;
 
+int answer = 50;
+bool visited[50];
+
 bool compare(string& str1, string& str2)
 {
     int length = str1.length(), count = 0;
@@ -13,27 +16,30 @@ bool compare(string& str1, string& str2)
     return (count == 1);
 }
 
-int dfs(string current, string goal, int result, vector<bool>& check, vector<string>& v)
+void dfs(string current, string goal, int step, vector<string>& v)
 {
-    if (current == goal) return result;
+    if (answer <= step) return;
+    if (current == goal) 
+    {
+        answer = min(answer, step);
+        return;
+    }
 
     for (int i = 0; i < v.size(); ++i)
     {
-        if (!check[i] && compare(current, v[i]))
+        if (!visited[i] && compare(current, v[i]))
         {
-            check[i] = true;
-            int pathResult = dfs(v[i], goal, result + 1, check, v);
-            if (pathResult > 0) return pathResult;
-            check[i] = false;
+            visited[i] = true;
+            dfs(v[i], goal, step + 1, v);
+            visited[i] = false;
         }
     }
     
-    return 0;
+    return;
 }
 
 int solution(string begin, string target, vector<string> words) {
-    if (find(words.begin(), words.end(), target) == words.end()) return 0;
+    dfs(begin, target, 0, words);
     
-    vector<bool> visited(words.size());
-    return dfs(begin, target, 0, visited, words);
+    return ((answer != 50) ? answer : 0);
 }
