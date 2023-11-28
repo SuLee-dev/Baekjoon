@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int answer = 50;
+int answer = 100;
 bool visited[50];
 
 bool compare(string& str1, string& str2)
@@ -41,5 +41,5 @@ void dfs(string current, string goal, int step, vector<string>& v)
 int solution(string begin, string target, vector<string> words) {
     dfs(begin, target, 0, words);
     
-    return ((answer != 50) ? answer : 0);
+    return ((answer != 100) ? answer : 0);
 }
