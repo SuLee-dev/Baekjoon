@@ -50,16 +50,16 @@ int main()
     memset(BOX, -1, sizeof(BOX));
     
     cin >> M >> N >> H;
-    int input, emptyCell = 0;
+    int input, raw = 0;
     for (int i = 0; i < M * N * H; ++i)
     {
         cin >> input;
         BOX[i] = input;
         if (input == 1) v.push_back(i);
-        else if (input == 0) ++emptyCell;
+        else if (input == 0) ++raw;
     }
     
-    if (emptyCell == 0)
+    if (raw == 0)
     {
         cout << 0 << endl;
         return 0;
